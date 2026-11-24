@@ -1,0 +1,28 @@
+# Copy to terraform.tfvars and fill in. Do NOT commit terraform.tfvars.
+subscription_id = "00000000-0000-0000-0000-000000000000"
+location        = "eastus2"
+prefix          = "wp"
+environment     = "prod"
+
+# Public IP of the machine / pipeline agent running Terraform (curl ifconfig.me)
+admin_ip_ranges = ["203.0.113.10/32"]
+
+alert_email = "cloudops@example.org"
+
+# Sizing for ~200k users (see README "Capacity planning")
+vmss_sku           = "Standard_D4s_v5"
+vmss_min_instances = 3
+vmss_max_instances = 30
+appgw_min_capacity = 2
+appgw_max_capacity = 20
+mysql_sku          = "GP_Standard_D4ds_v4"
+mysql_storage_gb   = 256
+
+wordpress_version = "latest"
+
+tags = {
+  workload    = "wordpress"
+  managed_by  = "terraform"
+  owner       = "enterprise-technology"
+  cost_center = "web"
+}
